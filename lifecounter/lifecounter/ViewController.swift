@@ -34,29 +34,29 @@ class ViewController: UIViewController {
             let score = Int(p1.text!)! + val
             p1.text = String(score)
             if score <= 0 {
-                loser.text = "\(p1Name.text ?? "") loses!"
                 loser.isHidden = false
+                loser.text = "\(p1Name.text ?? "") loses!"
             }
         case 2:
             let score = Int(p2.text!)! + val
             p2.text = String(score)
             if score <= 0 {
-                loser.text = "\(p2Name.text ?? "") loses!"
                 loser.isHidden = false
+                loser.text = "\(p2Name.text ?? "") loses!"
             }
         case 3:
             let score = Int(p3.text!)! + val
             p3.text = String(score)
             if score <= 0 {
-                loser.text = "\(p3Name.text ?? "") loses!"
                 loser.isHidden = false
+                loser.text = "\(p3Name.text ?? "") loses!"
             }
         case 4:
             let score = Int(p4.text!)! + val
             p4.text = String(score)
             if score <= 0 {
-                loser.text = "\(p4Name.text ?? "") loses!"
                 loser.isHidden = false
+                loser.text = "\(p4Name.text ?? "") loses!"
             }
         default:
             print("error")
