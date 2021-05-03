@@ -18,7 +18,7 @@ struct ContentView: View {
         GeometryReader { geometry in
             NavigationView {
                 VStack {
-                    HStack (alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: geometry.size.width * 0.08) {
+                    HStack (alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: geometry.size.width * 0.085) {
                         Button(action: {
                             if (list.players.count < 8) {
                                 addPlayer()
@@ -148,7 +148,7 @@ struct PlayerTemplate: View {
                     ZStack {
                         Color.white
                         VStack (alignment: .center, spacing: 20) {
-                            TextField("", text: $player.name).padding(.horizontal, 12).padding(.all, 5).multilineTextAlignment(.center).border(Color.gray.opacity(10), width: 1).cornerRadius(8)
+                            TextField("", text: $player.name).padding(.horizontal, 12).padding(.all, 6).border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: 1).cornerRadius(10).multilineTextAlignment(.center)
                             Button("Rename Player", action: {
                                 changeName = false
                             }).frame(width: 200, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
