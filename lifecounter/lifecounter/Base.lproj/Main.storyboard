@@ -16,14 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rLm-WY-P7P">
-                                <rect key="frame" x="0.0" y="-46" width="414" height="920"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" id="rLm-WY-P7P">
+                                <rect key="frame" x="-1" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6vL-6H-I1v">
-                                        <rect key="frame" x="0.0" y="94" width="414" height="820.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6vL-6H-I1v">
+                                        <rect key="frame" x="0.0" y="192" width="414" height="560.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="220" translatesAutoresizingMaskIntoConstraints="NO" id="rzZ-TU-NUa">
-                                                <rect key="frame" x="20" y="180" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="40" width="374" height="50"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Player 1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aLp-mK-5ol">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -36,7 +37,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ytl-9e-8EY">
-                                                <rect key="frame" x="20" y="250" width="374" height="60"/>
+                                                <rect key="frame" x="20" y="95" width="374" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2G-sB-rb7">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="60"/>
@@ -106,7 +107,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="220" translatesAutoresizingMaskIntoConstraints="NO" id="unC-ow-jeO">
-                                                <rect key="frame" x="20" y="330" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="160" width="374" height="50"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Player 2" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y4m-1k-IJS">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -119,7 +120,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HvR-eu-UkO">
-                                                <rect key="frame" x="20" y="400" width="374" height="60"/>
+                                                <rect key="frame" x="20" y="215" width="374" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pid-W6-0Dz">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="60"/>
@@ -189,7 +190,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="220" translatesAutoresizingMaskIntoConstraints="NO" id="OOn-EI-mkz">
-                                                <rect key="frame" x="20" y="480" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="280" width="374" height="50"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Player 3" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CIo-Fy-BWp">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -202,7 +203,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c4i-mx-deL">
-                                                <rect key="frame" x="20" y="550" width="374" height="60"/>
+                                                <rect key="frame" x="20" y="335" width="374" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PjE-8e-7gH">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="60"/>
@@ -272,7 +273,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="220" translatesAutoresizingMaskIntoConstraints="NO" id="PeA-KX-flf">
-                                                <rect key="frame" x="20" y="630" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="400" width="374" height="50"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Player 4" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WOS-W6-Z6i">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -285,7 +286,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wDw-Mn-jEH">
-                                                <rect key="frame" x="20" y="700" width="374" height="60"/>
+                                                <rect key="frame" x="20" y="455" width="374" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZd-Rg-2DV">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="60"/>
@@ -355,13 +356,13 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player X LOSES!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDy-f7-ooG">
-                                                <rect key="frame" x="20" y="780" width="374" height="20.5"/>
+                                                <rect key="frame" x="20" y="520" width="374" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemRedColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <edgeInsets key="layoutMargins" top="180" left="20" bottom="20" right="20"/>
+                                        <directionalEdgeInsets key="directionalLayoutMargins" top="40" leading="20" bottom="20" trailing="20"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -372,6 +373,7 @@
                                     <constraint firstAttribute="bottom" secondItem="6vL-6H-I1v" secondAttribute="bottom" constant="5.5" id="gzS-eg-wtf"/>
                                     <constraint firstItem="6vL-6H-I1v" firstAttribute="leading" secondItem="rLm-WY-P7P" secondAttribute="leading" id="qiF-LX-NG5"/>
                                 </constraints>
+                                <directionalEdgeInsets key="directionalLayoutMargins" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
