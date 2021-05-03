@@ -15,38 +15,48 @@ struct ContentView: View {
     @ObservedObject var list: Players = Players()
     
     var body: some View {
-        NavigationView {
-            VStack {
-                HStack (alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 25) {
-                    Button(action: {
-                        if (list.players.count < 8) {
-                            addPlayer()
-                        }
-                    }, label: {
-                        Text("Add Player")
-                    }).disabled(gamePlay)
-                    NavigationLink(
-                        destination: HistoryView(histList: $history)) {
-                            Text("History")
-                        }
-                    Button(action: {
-                        if (list.players.count > 2) {
-                            list.players.removeLast()
-                        }
-                    }, label: {
-                        Text("Remove Player")
-                    }).disabled(gamePlay)
-                }
-                ScrollView {
-                    ZStack {
-                        VStack {
-                            ForEach(list.players, id: \.self) {player in
-                                PlayerTemplate(player: player, playersLost: $playersLost, loserMsg: $loserMsg, history: $history, gamePlay: $gamePlay)
+        GeometryReader { geometry in
+            NavigationView {
+                VStack {
+                    HStack (alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: geometry.size.width * 0.08) {
+                        Button(action: {
+                            if (list.players.count < 8) {
+                                addPlayer()
+                            }
+                        }, label: {
+                            Text("Add Player").font(.system(size: geometry.size.width * 0.045))
+                        }).disabled(gamePlay)
+                        NavigationLink(
+                            destination: HistoryView(histList: $history)) {
+                                Text("History").font(.system(size: geometry.size.width * 0.045))
+                            }
+                        Button(action: {
+                            if (list.players.count > 2) {
+                                list.players.removeLast()
+                            }
+                        }, label: {
+                            Text("Remove Player").font(.system(size: geometry.size.width * 0.045))
+                        }).disabled(gamePlay)
+                    }
+                    ScrollView {
+                        ZStack {
+                            VStack (spacing: geometry.size.width * 0.3) {
+                                ForEach(list.players, id: \.self) {player in
+                                    PlayerTemplate(player: player, playersLost: $playersLost, loserMsg: $loserMsg, history: $history, gamePlay: $gamePlay)
+                                }
                             }
                         }
+                        VStack (spacing: geometry.size.height * 0.02) {
+                            Text(loserMsg).font(.system(size: geometry.size.width * 0.05)).padding(.top)
+                            Button(action: {
+                                reset()
+                            }, label: {
+                                Text("Reset Game").font(.system(size: geometry.size.width * 0.05)).foregroundColor(.red)
+                            })
+                        }.padding(.top, geometry.size.width * 0.3)
                     }
-                }
-            }.padding(.horizontal, 32)
+                }.padding(.horizontal, geometry.size.width * 0.08)
+            }
         }
     }
     
@@ -59,7 +69,7 @@ struct ContentView: View {
         playersLost = 0
         loserMsg = ""
         history = []
-        // game not started
+        gamePlay = false
     }
 }
 
@@ -75,58 +85,62 @@ struct PlayerTemplate: View {
     @Binding var gamePlay: Bool
 
     var body: some View {
-        ZStack {
-            VStack (alignment: .center, spacing: 10) {
-                HStack {
-                    Button(action: {
-                        self.changeName = true
-                    }, label: {
-                        Text(self.player.name).font(.system(size: 17)).foregroundColor(.black)
-                    })
-                    Spacer()
-                    Text(String(self.lives)).font(.system(size: 17))
-                }.padding(.all)
-                HStack (alignment: .center, spacing: 25) {
-                    // - button
-                    Button(action: {
-                        gamePlay = true
-                        self.lives -= self.increment
-                        if (self.lives <= 0 && !lost) {
-                            self.lost = true
-                            loserMsg = player.name + " loses!"
-                            playersLost += 1
-                            history.append(player.name + " lost")
-                        } else {
-                            history.append(player.name + " lost " + String(self.increment) + " lives")
+        GeometryReader { geometry in
+            ZStack {
+                VStack (alignment: .center, spacing: geometry.size.width * 0.01) {
+                    HStack {
+                        Button(action: {
+                            self.changeName = true
+                        }, label: {
+                            Text(self.player.name).font(.system(size: geometry.size.width * 0.055)).foregroundColor(.black)
+                        })
+                        Spacer()
+                        Text(String(self.lives)).font(.system(size: geometry.size.width * 0.055))
+                    }.padding(.all)
+                    HStack (alignment: .center, spacing: 25) {
+                        // - button
+                        Button(action: {
+                            gamePlay = true
+                            self.lives -= self.increment
+                            if (self.lives <= 0 && !lost) {
+                                self.lost = true
+                                loserMsg = player.name + " loses!"
+                                playersLost += 1
+                                history.append(player.name + " lost")
+                            } else {
+                                history.append(player.name + " lost " + String(self.increment) + " lives")
+                            }
+                        }){
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 8).fill(Color.init(.red))
+                                Text("-").font(.system(size: 25)).foregroundColor(.white).frame(width: 10, height: 60, alignment: .center)
+                            }
                         }
-                    }){
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 8).fill(Color.init(.red))
-                            Text("-").font(.system(size: 25)).foregroundColor(.white).frame(width: 10, height: 60, alignment: .center)
-                        }
-                    }
-                    // num increment
-                    TextField("", value: $increment, formatter: NumberFormatter()).multilineTextAlignment(.center)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    // + button
-                    Button(action: {
-                        gamePlay = true
-                        self.lives += self.increment
-                        history.append(player.name + " got " + String(self.increment) + " lives")
-                    }) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 8).fill(Color.init(.systemGreen))
-                            Text("+").font(.system(size: 20)).foregroundColor(.white)
+                        // num increment
+                        TextField("", value: $increment, formatter: NumberFormatter()).multilineTextAlignment(.center)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        // + button
+                        Button(action: {
+                            gamePlay = true
+                            self.lives += self.increment
+                            history.append(player.name + " got " + String(self.increment) + " lives")
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 8).fill(Color.init(.systemGreen))
+                                Text("+").font(.system(size: 20)).foregroundColor(.white)
+                            }
                         }
                     }
                 }
-            }
-            if (self.changeName) {
-                ZStack {
-                    Color.white
-                    VStack {
-                        Text("Rename player")
-                        Spacer()
+                if (self.changeName) {
+                    ZStack {
+                        Color.white
+                        VStack (alignment: .center, spacing: 20) {
+                            TextField("", text: $player.name).padding(.horizontal, 12).padding(.all, 5).multilineTextAlignment(.center).border(Color.gray.opacity(10), width: 1).cornerRadius(8)
+                            Button("Rename Player", action: {
+                                changeName = false
+                            }).frame(width: 200, height: 10, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        }.frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     }
                 }
             }
