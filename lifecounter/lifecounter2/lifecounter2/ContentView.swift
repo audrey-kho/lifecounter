@@ -42,7 +42,7 @@ struct ContentView: View {
                         ZStack {
                             VStack (spacing: geometry.size.width * 0.3) {
                                 ForEach(list.players, id: \.self) {player in
-                                    PlayerTemplate(player: player, playersLost: $playersLost, loserMsg: $loserMsg, history: $history, gamePlay: $gamePlay)
+                                    PlayerTemplate(player: player, playersLost: $playersLost, loserMsg: $loserMsg, history: $history, gamePlay: $gamePlay, list: list)
                                 }
                             }
                         }
@@ -83,6 +83,15 @@ struct PlayerTemplate: View {
     @Binding var loserMsg: String
     @Binding var history:[String]
     @Binding var gamePlay: Bool
+    @ObservedObject var list: Players
+    
+    private func reset() {
+        list.players = Players().players
+        playersLost = 0
+        loserMsg = ""
+        history = []
+        gamePlay = false
+    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -109,6 +118,9 @@ struct PlayerTemplate: View {
                                 history.append(player.name + " lost")
                             } else {
                                 history.append(player.name + " lost " + String(self.increment) + " lives")
+                            }
+                            if (playersLost == list.players.count - 1) {
+                                loserMsg = "Game over!"
                             }
                         }){
                             ZStack {
