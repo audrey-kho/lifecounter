@@ -56,7 +56,7 @@ struct ContentView: View {
                         }.padding(.top, geometry.size.width * 0.3)
                     }
                 }.padding(.horizontal, geometry.size.width * 0.08)
-            }
+            }.navigationViewStyle(StackNavigationViewStyle())
         }
     }
     
